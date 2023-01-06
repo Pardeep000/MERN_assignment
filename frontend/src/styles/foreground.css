@@ -1,0 +1,59 @@
+.content {
+  display: flex;
+}
+
+.part1 {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: orange; */
+}
+.part2 {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: purple; */
+}
+.line1 {
+  font-family: "Kanit", sans-serif;
+  font-family: "Lobster", cursive;
+  color: "black";
+  font-size: 45px;
+}
+
+.line2 {
+  font-family: "Kanit", sans-serif;
+  font-family: "Lobster", cursive;
+  color: "black";
+  font-size: 30px;
+}
+.btns {
+  margin-left: 5vh;
+  color: red;
+}
+
+.bgimg {
+  border-radius: 50%;
+  height: 50%;
+  width: 60%;
+}
+
+/* contact page */
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30vh;
+  /*  */
+  background-image: url("https://t4.ftcdn.net/jpg/00/98/59/35/360_F_98593539_L3cNIqMZT511Qoz2DXe31xBAqMqPYdGj.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}

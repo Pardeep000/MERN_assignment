@@ -1,0 +1,141 @@
+.phomeContainer {
+  position: relative;
+  top: 10%;
+  margin: 0 10%;
+  display: flex;
+}
+
+.pleftPart {
+  margin-top: 2%;
+  width: 30%;
+  height: 85vh;
+  background-color: #0d6efd;
+  margin-right: 2%;
+}
+
+.pimgPart {
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pimgPart img {
+  border: 1px solid black;
+  border-radius: 35px;
+  width: 15vw;
+  height: 95%;
+}
+.pinfoPart {
+  height: 60%;
+  /* background-color: lawngreen; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pinnerPart {
+  border: 1px solid black;
+  border-radius: 35px;
+  width: 17vw;
+  height: 50vh;
+  padding: 15px;
+  background-color: lightgray;
+}
+
+.pinfoText span {
+  font-weight: bold;
+}
+
+.plogoutbtn {
+  display: flex;
+  justify-content: center;
+}
+
+/*  */
+.prightPart {
+  width: 90%;
+  /* background-color: aqua; */
+  padding: 15px;
+}
+
+.ptodoContainer {
+  background-color: grey;
+  border: 2px Solid blue;
+  padding: 5px;
+  margin: 7px 0;
+}
+.ptitle {
+  text-decoration: underline;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+.ptitle span {
+  color: blue;
+  margin-right: 5px;
+}
+.pindex {
+  position: relative;
+  right: 0px;
+  /* background-color: orange; */
+}
+.pdescription {
+  color: blue;
+}
+.pbuttons {
+  display: flex;
+  justify-content: flex-end;
+}
+.pnotloggedin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15%;
+}
+.pdate {
+  color: white;
+}
+
+.psubmitbtn {
+  background-color: lightblue;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 5vh;
+  margin-left: 5px;
+}
+
+.postContainer {
+  background-color: grey;
+  border: 2px Solid blue;
+  padding: 5px;
+  margin: 7px 0;
+}
+.posttitle {
+  text-decoration: underline;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+.posttitle span {
+  color: blue;
+  margin-right: 5px;
+}
+.postindex {
+  position: relative;
+  right: 0px;
+  /* background-color: orange; */
+}
+.postdescription {
+  color: white;
+}
+
+.postowner {
+  text-decoration: underline;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+.postowner span {
+  color: blue;
+  margin-right: 5px;
+}

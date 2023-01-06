@@ -1,0 +1,97 @@
+.homeContainer {
+  position: relative;
+  top: 10%;
+  margin: 0 10%;
+  display: flex;
+}
+
+.leftPart {
+  margin-top: 2%;
+  width: 30%;
+  height: 85vh;
+  background-color: #0d6efd;
+  margin-right: 2%;
+}
+
+.imgPart {
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imgPart img {
+  border: 1px solid black;
+  border-radius: 35px;
+  width: 15vw;
+  height: 95%;
+}
+.infoPart {
+  height: 60%;
+  /* background-color: lawngreen; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.innerPart {
+  border: 1px solid black;
+  border-radius: 35px;
+  width: 17vw;
+  height: 50vh;
+  padding: 15px;
+  background-color: lightgray;
+}
+
+.infoText span {
+  font-weight: bold;
+}
+
+.logoutbtn {
+  display: flex;
+  justify-content: center;
+}
+
+/*  */
+.rightPart {
+  width: 90%;
+  /* background-color: aqua; */
+  padding: 15px;
+}
+
+.todoContainer {
+  background-color: grey;
+  border: 2px Solid blue;
+  padding: 5px;
+  margin: 7px 0;
+}
+.title {
+  text-decoration: underline;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+.title span {
+  color: blue;
+  margin-right: 5px;
+}
+.index {
+  position: relative;
+  right: 0px;
+  /* background-color: orange; */
+}
+.description {
+  color: blue;
+}
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+.notloggedin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15%;
+}
+.date {
+  color: white;
+}

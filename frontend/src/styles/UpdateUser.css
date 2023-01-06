@@ -1,0 +1,40 @@
+.updateContainer {
+  position: relative;
+  top: 12%;
+  background-color: aqua;
+  max-width: 50%;
+  margin: auto;
+}
+
+.imgupdatePart {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+}
+
+.imgupdatePart img {
+  margin-top: 2%;
+  border: 1px solid black;
+  border-radius: 35px;
+  width: 20vw;
+  height: 35vh;
+}
+
+.imgupdatePart form {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+.infoupdatePart {
+  height: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+}
+.infoupdatePart form {
+  width: 70%;
+  margin-bottom: 3%;
+}
