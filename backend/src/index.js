@@ -1,5 +1,6 @@
 const express = require("express");
 const connectMongo = require("./db");
+const connectCloudinary = require("./cloudinary");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -16,6 +17,8 @@ require("dotenv").config();
 //
 //Connecting mongodb
 connectMongo();
+//Connecting cloudinary
+connectCloudinary();
 //
 console.log("ok");
 //

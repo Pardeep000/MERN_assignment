@@ -10,7 +10,7 @@
   height: 40%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: orange;
 }
@@ -27,6 +27,7 @@
   padding-top: 2%;
   padding-bottom: 2%;
 }
+
 .infoupdatePart {
   height: 55%;
   display: flex;
@@ -34,6 +35,7 @@
   align-items: center;
   background-color: grey;
 }
+
 .infoupdatePart form {
   width: 70%;
   margin-bottom: 3%;

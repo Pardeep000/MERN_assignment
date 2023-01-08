@@ -15,17 +15,15 @@ export default function UpdateUser() {
   let userstatus = useSelector((e) => e.userdata);
   const dispatch = useDispatch();
   //
+  const [imagepreview, setImagepreview] = useState("");
   const [image, setImage] = useState("");
-  const [imageonMount, setImageonMount] = useState("");
   let handleImage = (e) => {
     e.preventDefault();
     console.log("uploading image...");
-    //
+
     const formdata = new FormData(e.target);
-    // setImage(formdata.get("img"));
-    //
     console.log("formdata", formdata);
-    let url = "https://lywmqv.sse.codesandbox.io/img";
+    let url = "https://lywmqv.sse.codesandbox.io/uploadImg";
     // //
     fetch(url, {
       method: "POST",
@@ -35,7 +33,12 @@ export default function UpdateUser() {
       }
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        if (data.msg === "got the img") {
+          alert("New Image has been saved.");
+        }
+      })
       .catch((err) => console.error(err));
     //
   };
@@ -69,19 +72,9 @@ export default function UpdateUser() {
   //
 
   //For reading the image
-  function _arrayBufferToBase64(buffer) {
-    var binary = "";
-    var bytes = new Uint8Array(buffer);
-    var len = bytes.byteLength;
-    for (var i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return window.btoa(binary);
-  }
-  //
-  let read = () => {
+  let readingImage = () => {
     console.log("reading...");
-    fetch("https://lywmqv.sse.codesandbox.io/readimg", {
+    fetch("https://lywmqv.sse.codesandbox.io/readImg", {
       method: "GET",
       headers: {
         authtoken: localStorage.getItem("token")
@@ -89,12 +82,8 @@ export default function UpdateUser() {
     })
       .then((a) => a.json())
       .then(async (resp) => {
-        console.log("updating_resp=>", resp);
-        // console.log("resp2=>", resp[0].img.data.data);
-        let convertedbase64 = _arrayBufferToBase64(resp[0].img.data.data);
-        // console.log("buffer=>", convertedbase64);
-        setImageonMount(convertedbase64);
-        //
+        console.log("Image-resp", resp);
+        setImage(resp);
       })
       .catch((e) => console.log("error in reading image", e));
     //
@@ -102,8 +91,7 @@ export default function UpdateUser() {
   //useEffect for reading
   useEffect((e) => {
     if (localStorage.getItem("token") !== null) {
-      read();
-      console.log("reading image");
+      readingImage();
     }
   }, []);
   return localStorage.getItem("token") !== null ? (
@@ -112,21 +100,27 @@ export default function UpdateUser() {
       <div className="updateContainer">
         <div className="imgupdatePart">
           {/* <img src={image === "" ? person : URL.createObjectURL(image)} /> */}
-          {imageonMount === "" ? (
-            <img src={image === "" ? person : URL.createObjectURL(image)} />
+          {/* <img src={image === "" ? person : URL.createObjectURL(image)} /> */}
+          {image === "" ? (
+            <img
+              src={
+                imagepreview === "" ? person : URL.createObjectURL(imagepreview)
+              }
+            />
           ) : (
-            <img src={`data:image/png;base64,${imageonMount}`} alt="" />
+            // <img src={image} alt="" />
+            <img src={image === null ? person : image} alt="" />
           )}
           <form onSubmit={handleImage}>
             <input
               type="file"
               name="img"
               onChange={(e) => {
-                setImage(e.target.files[0]);
-                setImageonMount("");
+                setImagepreview(e.target.files[0]);
+                setImage("");
               }}
             />
-            <button>Save Image</button>
+            <button type="submit">Save Image</button>
           </form>
         </div>
         <div className="infoupdatePart">

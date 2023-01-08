@@ -139,3 +139,19 @@
   color: blue;
   margin-right: 5px;
 }
+
+.topbar {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.ownerImg {
+  width: 10%;
+}
+.ownerdata {
+  width: 90%;
+}
+.ownerImg img {
+  width: 90%;
+  height: 75%;
+}

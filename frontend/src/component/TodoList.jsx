@@ -65,19 +65,9 @@ export default function TodoList() {
     e.target.reset();
   };
   //For reading the image
-  function _arrayBufferToBase64(buffer) {
-    var binary = "";
-    var bytes = new Uint8Array(buffer);
-    var len = bytes.byteLength;
-    for (var i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return window.btoa(binary);
-  }
-  //
-  let read = () => {
+  let readingImage = () => {
     console.log("reading...");
-    fetch("https://lywmqv.sse.codesandbox.io/readimg", {
+    fetch("https://lywmqv.sse.codesandbox.io/readImg", {
       method: "GET",
       headers: {
         authtoken: localStorage.getItem("token")
@@ -85,12 +75,8 @@ export default function TodoList() {
     })
       .then((a) => a.json())
       .then(async (resp) => {
-        console.log("Image_resp=>", resp);
-        // console.log("resp2=>", resp[0].img.data.data);
-        let convertedbase64 = _arrayBufferToBase64(resp[0].img.data.data);
-        // console.log("buffer=>", convertedbase64);
-        setImage(convertedbase64);
-        //
+        console.log("Image-resp", resp);
+        setImage(resp);
       })
       .catch((e) => console.log("error in reading image", e));
     //
@@ -99,7 +85,7 @@ export default function TodoList() {
   useEffect((e) => {
     if (localStorage.getItem("token") !== null) {
       dispatch(readTask());
-      read();
+      readingImage();
     }
     console.log("user.ownerInfo", user.ownerInfo);
   }, []);
@@ -112,12 +98,11 @@ export default function TodoList() {
       <div className="homeContainer">
         <div className="leftPart">
           <div className="imgPart">
-            {/* <img src={person} alt="person" /> */}
-            {/* <img src={`data:image/png;base64,${image}`} alt="" /> */}
+            {/* initially image will be empty so set person then runs other condition */}
             {image === "" ? (
-              <img src={person} alt="person" />
+              <img src={person} alt="" />
             ) : (
-              <img src={`data:image/png;base64,${image}`} alt="" />
+              <img src={image === null ? person : image} alt="" />
             )}
           </div>
           <div className="infoPart">

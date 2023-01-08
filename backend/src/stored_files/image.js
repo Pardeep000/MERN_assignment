@@ -1,20 +1,16 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const postSchema = new Schema({
+const imgSchema = new Schema({
   id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user"
   },
-  title: {
+  name: {
     type: String,
     required: true
   },
-  description: {
-    type: String,
-    required: true
-  },
-  topic: {
+  imgUrl: {
     type: String,
     required: true
   },
@@ -24,6 +20,6 @@ const postSchema = new Schema({
   }
 });
 
-const post = mongoose.model("post", postSchema);
+const uimg = mongoose.model("userImg", imgSchema);
 
-module.exports = post;
+module.exports = uimg;

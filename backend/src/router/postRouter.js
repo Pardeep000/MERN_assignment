@@ -27,24 +27,27 @@ router.post("/createpost", userauth, createpostArray, async (req, res) => {
   let { title, description, topic } = req.body;
   let uid = req.data.id;
   //for finding name of poster
-  let existingUser = await User.findOne({ _id: uid });
   //
   try {
     await post.create({
       id: uid,
-      name: existingUser.name,
       title,
       description,
       topic
     });
     //reading all posts by everyone
-    // let ownerPosts = await post.find({ id: req.data.id }).sort({ date: -1 });
-    let allPosts = await post.find().sort({ date: -1 });
-    //sending response
-    res.status(200).json({
-      msg: "Post has been added.",
-      result: allPosts
-    });
+    post
+      .find()
+      .sort({ date: -1 })
+      .populate("id")
+      .exec(function (err, result) {
+        if (err)
+          res
+            .status(400)
+            .json({ msg: "error occurred in creating a post.", error: err });
+        res.status(200).json({ msg: "Post has been added.", result: result });
+      });
+    //
   } catch (e) {
     res.status(400).json({ msg: "error occurred in creating post", error: e });
   }
@@ -52,21 +55,79 @@ router.post("/createpost", userauth, createpostArray, async (req, res) => {
 });
 
 router.get("/readpost", userauth, async (req, res) => {
-  try {
-    //reading all posts by everyone
-    // let ownerPosts = await post.find({ id: req.data.id }).sort({ date: -1 });
-    let allPosts = await post.find().sort({ date: -1 });
-    //sending response
-    res.status(200).json({
-      msg: "All Post has been read.",
-      result: allPosts
+  // let ownerPosts = await post.find({ id: req.data.id }).sort({ date: -1 });
+  post
+    .find()
+    .sort({ date: -1 })
+    .populate("id")
+    .exec(function (err, result) {
+      if (err)
+        res
+          .status(400)
+          .json({ msg: "error occurred in reading all post", error: err });
+      res.status(200).json({ msg: "All Post has been read.", result: result });
     });
-  } catch (e) {
-    res
-      .status(400)
-      .json({ msg: "error occurred in reading all post", error: e });
-  }
+
   //end
 });
 
 module.exports = router;
+
+// router.get("/readpost", userauth, async (req, res) => {
+//   try {
+//     //reading all posts by everyone
+//     // let ownerPosts = await post.find({ id: req.data.id }).sort({ date: -1 });
+//     let allPosts = await post.find().sort({ date: -1 });
+//     //sending response
+//     res.status(200).json({
+//       msg: "All Post has been read.",
+//       result: allPosts
+//     });
+//   } catch (e) {
+//     res
+//       .status(400)
+//       .json({ msg: "error occurred in reading all post", error: e });
+//   }
+//   //end
+// });
+
+// router.get("/readPostwithImage", userauth, async (req, res) => {
+//   const uid = req.data.id;
+//   //
+//   // post
+//   //   .aggregate([
+//   //     {
+//   //       $lookup: {
+//   //         from: User.collection.name,
+//   //         localField: "id",
+//   //         foreignField: "_id",
+//   //         as: "joined"
+//   //       }
+//   //     }
+//   //   ])
+//   //   .exec(function (err, result) {
+//   //     if (err) res.send(err);
+//   //     res.send(result);
+//   //   });
+//   console.log("User.collection.name", image.collection.name);
+//   post
+//     .aggregate([
+//       {
+//         $lookup: {
+//           from: User.collection.name,
+//           localField: "id",
+//           foreignField: "_id",
+//           as: "joined"
+//         }
+//         // $project:{
+
+//         // }
+//       }
+//     ])
+//     .exec(function (err, result) {
+//       if (err) res.send(err);
+//       res.send(result);
+//     });
+
+//   //
+// }); //
